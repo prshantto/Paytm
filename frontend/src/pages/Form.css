@@ -1,0 +1,51 @@
+/* This is the CSS for Login and Register Pages. */
+
+#container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-size: 3vh;
+}
+
+#form-wrapper {
+  padding: 8vh 10vw;
+  width: 60vw;
+  height: 80vh;
+  background-color: #e0f5fd;
+  border: 2px solid #bbe9fb;
+  border-radius: 20px;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.form-inputs {
+  padding: 10px;
+  border-radius: 5px;
+  border: 3px solid #cccccc;
+  background-color: #e5e7eb;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.form-inputs:hover {
+  background-color: #cdcdce;
+}
+
+.submit-button {
+  grid-column: 1 / span 2;
+  padding: 10px;
+  border-radius: 5px;
+  border: 3px solid #6598ff;
+  background-color: #86adfc;
+  border-radius: 10px;
+}
+
+.submit-button:hover {
+  background-color: #6598ff;
+}
