@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Form.css";
 
 const Register = () => {
@@ -7,6 +8,7 @@ const Register = () => {
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
   const handeleSubmit = (e) => {
@@ -17,7 +19,22 @@ const Register = () => {
       email,
       password,
     };
-    console.log(user);
+    axios
+      .post(`${import.meta.env.VITE_API_URL}/api/users/register`, user)
+      .then((res) => {
+        console.log(res);
+        if (res.status === 201) {
+          navigate("/login");
+        }
+      })
+      .catch((err) => {
+        const errorMessage =
+          err.response?.data?.errors?.[0]?.msg ||
+          err.response?.data?.message ||
+          "An error occurred during login";
+        console.log(errorMessage);
+        setErrors({ error: errorMessage });
+      });
     setFirstname("");
     setLastname("");
     setEmail("");
@@ -79,6 +96,9 @@ const Register = () => {
                 Login
               </span>
             </p>
+            {Object.keys(errors).length > 0 ? (
+              <div className="error-message">{errors.error}</div>
+            ) : null}
           </form>
         </div>{" "}
       </div>

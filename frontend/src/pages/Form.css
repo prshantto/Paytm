@@ -13,7 +13,7 @@
 #form-wrapper {
   padding: 8vh 10vw;
   width: 60vw;
-  height: 80vh;
+  min-height: 65vh;
   background-color: #e0f5fd;
   border: 2px solid #bbe9fb;
   border-radius: 20px;
@@ -48,4 +48,16 @@
 
 .submit-button:hover {
   background-color: #6598ff;
+}
+
+.error-message {
+  grid-column: span 2 / span 2;
+  color: #ef4444; /* Equivalent to text-red-500 */
+  background-color: #fee2e2; /* Equivalent to bg-red-100 */
+  height: 3.5rem; /* Equivalent to h-14 */
+  text-align: center; /* Equivalent to text-center */
+  border: 2px solid #f87171; /* Equivalent to border-2 + border-red-400 */
+  border-radius: 0.5rem; /* Equivalent to rounded-lg */
+  padding: 0.5rem 0; /* Equivalent to py-2 */
+  margin-top: 1rem; /* Equivalent to mt-4 */
 }

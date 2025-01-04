@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { UNSAFE_useFogOFWarDiscovery, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Form.css";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
 
   const handeleSubmit = (e) => {
     e.preventDefault();
@@ -13,7 +15,23 @@ const Login = () => {
       email,
       password,
     };
-    console.log(user);
+    axios
+      .post(`${import.meta.env.VITE_API_URL}/api/users/login`, user)
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          setErrors({});
+          navigate("/home");
+        }
+      })
+      .catch((err) => {
+        const errorMessage =
+          err.response?.data?.errors?.[0]?.msg ||
+          err.response?.data?.message ||
+          "An error occurred during login";
+        console.log(errorMessage);
+        setErrors({ error: errorMessage });
+      });
     setEmail("");
     setPassword("");
   };
@@ -56,6 +74,9 @@ const Login = () => {
                 Register
               </span>
             </p>
+            {Object.keys(errors).length > 0 ? (
+              <div className="error-message">{errors.error}</div>
+            ) : null}
           </form>
         </div>
       </div>
