@@ -31,8 +31,8 @@ const Register = () => {
         const errorMessage =
           err.response?.data?.errors?.[0]?.msg ||
           err.response?.data?.message ||
-          "An error occurred during login";
-        console.log(errorMessage);
+          "Could not register";
+        console.log(err);
         setErrors({ error: errorMessage });
       });
     setFirstname("");
@@ -41,69 +41,92 @@ const Register = () => {
     setPassword("");
   };
   return (
-    <>
-      <div id="container">
-        <div id="form-wrapper">
-          <h1 className="text-2xl w-full text-center mb-10 font-bold">
-            Register your Paytm account
-          </h1>
+    <div className="container">
+      <h2>Register</h2>
+      <form onSubmit={handeleSubmit}>
+        <div className="form-group">
+          <label htmlFor="name">Name</label>
+          <div className="name-inputs">
+            <input
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
+              type="text"
+              id="firstname"
+              name="firstname"
+              placeholder="First Name"
+              required
+            />
+            <input
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
+              type="text"
+              id="lastname"
+              name="lastname"
+              placeholder="Last Name"
+              required
+            />
+          </div>
+        </div>
 
-          <form onSubmit={(e) => handeleSubmit(e)} className="form">
-            <label htmlFor="name">Enter your name:</label>
-            <div id="name" className="col-span-2 flex justify-between">
-              <input
-                value={firstname}
-                onChange={(e) => setFirstname(e.target.value)}
-                className="form-inputs"
-                type="text"
-                placeholder="Firstname"
-              />
-              <input
-                value={lastname}
-                onChange={(e) => setLastname(e.target.value)}
-                className="form-inputs"
-                type="text"
-                placeholder="Lastname"
-              />
-            </div>
-            <label htmlFor="email">Enter your email:</label>
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              id="email"
-              className="form-inputs col-span-2"
-              type="email"
-              placeholder="Email"
-            />
-            <label htmlFor="password">Enter your password:</label>
-            <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              id="password"
-              className="form-inputs col-span-2"
-              type="password"
-              placeholder="Password"
-            />
-            <button className="submit-button col-span-2" type="submit">
-              Register
-            </button>
-            <p className="col-span-2 text-center text-base">
-              Already have an account?
-              <span
-                onClick={() => navigate("/login")}
-                className="text-blue-500 cursor-pointer"
-              >
-                Login
-              </span>
-            </p>
-            {Object.keys(errors).length > 0 ? (
-              <div className="error-message">{errors.error}</div>
-            ) : null}
-          </form>
-        </div>{" "}
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Create a password"
+            required
+          />
+        </div>
+
+        <button type="submit" className="btn">
+          Sign Up
+        </button>
+      </form>
+
+      <div className="form-footer">
+        <p>
+          Already have an account?{" "}
+          <span
+            className="link text-blue-600 font-bold cursor-pointer"
+            onClick={() => navigate("/login")}
+          >
+            Login here
+          </span>
+        </p>
+
+        {Object.keys(errors).length > 0 ? (
+          <div className="error-message">{errors.error}</div>
+        ) : null}
       </div>
-    </>
+    </div>
   );
 };
 
 export default Register;
+
+// import React from "react";
+// import "./App.css";
+
+// const Register = () => {
+//     return (
+
+//     );
+// };
+
+// export default Register;
