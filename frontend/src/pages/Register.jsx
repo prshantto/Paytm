@@ -42,77 +42,81 @@ const Register = () => {
   };
   return (
     <div className="container">
-      <h2>Register</h2>
-      <form onSubmit={handeleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <div className="name-inputs">
+      <div className="form-header">
+        <h2>
+          Create your account
+          <p className="welcome-message text-sm">
+            Welcome! Please fill in the details to get started.
+          </p>
+        </h2>
+
+        <form onSubmit={handeleSubmit}>
+          <div className="form-group">
+            <label htmlFor="name">Name</label>
+            <div className="name-inputs">
+              <input
+                value={firstname}
+                onChange={(e) => setFirstname(e.target.value)}
+                type="text"
+                id="firstname"
+                name="firstname"
+                placeholder="First Name"
+                required
+              />
+              <input
+                value={lastname}
+                onChange={(e) => setLastname(e.target.value)}
+                type="text"
+                id="lastname"
+                name="lastname"
+                placeholder="Last Name"
+                required
+              />
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
             <input
-              value={firstname}
-              onChange={(e) => setFirstname(e.target.value)}
-              type="text"
-              id="firstname"
-              name="firstname"
-              placeholder="First Name"
-              required
-            />
-            <input
-              value={lastname}
-              onChange={(e) => setLastname(e.target.value)}
-              type="text"
-              id="lastname"
-              name="lastname"
-              placeholder="Last Name"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
               required
             />
           </div>
-        </div>
 
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-          />
-        </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Create a password"
+              required
+            />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Create a password"
-            required
-          />
-        </div>
+          <button type="submit" className="btn">
+            Sign Up
+          </button>
 
-        <button type="submit" className="btn">
-          Sign Up
-        </button>
-      </form>
-
+          {Object.keys(errors).length > 0 ? (
+            <div className="error-message">{errors.error}</div>
+          ) : null}
+        </form>
+      </div>
       <div className="form-footer">
         <p>
           Already have an account?{" "}
-          <span
-            className="link text-blue-600 font-bold cursor-pointer"
-            onClick={() => navigate("/login")}
-          >
+          <span className="link" onClick={() => navigate("/login")}>
             Login here
           </span>
         </p>
-
-        {Object.keys(errors).length > 0 ? (
-          <div className="error-message">{errors.error}</div>
-        ) : null}
       </div>
     </div>
   );

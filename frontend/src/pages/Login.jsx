@@ -37,38 +37,48 @@ const Login = () => {
   };
   return (
     <div className="container">
-      <h2>Login</h2>
-      <form onSubmit={handeleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-          />
-        </div>
+      <div className="form-header">
+        <h2>
+          Sign in to Paytm
+          <p className="welcome-message text-sm">
+            Welcome back! Please sign in to continue
+          </p>
+        </h2>
+        <form onSubmit={handeleSubmit}>
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Create a password"
-            required
-          />
-        </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Create a password"
+              required
+            />
+          </div>
 
-        <button type="submit" className="btn">
-          Login
-        </button>
-      </form>
+          <button type="submit" className="btn">
+            Login
+          </button>
+          {Object.keys(errors).length > 0 ? (
+            <div className="error-message">{errors.error}</div>
+          ) : null}
+        </form>
+      </div>
 
       <div className="form-footer">
         <p>
@@ -80,9 +90,6 @@ const Login = () => {
             Register here
           </span>
         </p>
-        {Object.keys(errors).length > 0 ? (
-          <div className="error-message">{errors.error}</div>
-        ) : null}
       </div>
     </div>
   );

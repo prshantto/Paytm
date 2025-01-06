@@ -18,30 +18,39 @@ body {
 
 .container {
   background: #ffffff;
+  border-radius: 15px;
+  border: 1px solid #ccc8c8;
   width: 100%;
-  max-width: 400px;
+  min-width: 400px;
+  max-width: 500px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.form-header {
+  border-bottom: 1px solid #ccc8c8;
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .container h2 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #1f4fdff1;
+  font-size: 20px;
+  font-weight: bolder;
   text-align: center;
   margin-bottom: 20px;
 }
-
+.container h2 p {
+  color: #9b9b9b;
+  font-size: 15px;
+  font-weight: normal;
+  text-align: center;
+  margin-bottom: 20px;
+}
 .form-group {
   margin-bottom: 20px;
 }
 
 .form-group label {
   display: block;
-  font-weight: 600;
   margin-bottom: 8px;
-  color: #1f4fdff1;
 }
 
 .name-inputs {
@@ -57,7 +66,6 @@ body {
   font-size: 16px;
   transition: border-color 0.3s;
 }
-
 .form-group input {
   width: 100%;
   padding: 12px;
@@ -68,12 +76,12 @@ body {
 }
 
 .form-group input:focus {
-  border-color: #1f4fdff1;
+  border-color: #767bf5;
   outline: none;
 }
 
 .btn {
-  background: #1f4fdff1;
+  background: #005ce6;
   color: #ffffff;
   border: none;
   border-radius: 20px;
@@ -86,22 +94,25 @@ body {
 }
 
 .btn:hover {
-  background: #005ce6;
+  background: #307df1;
 }
 
 .form-footer {
+  height: 6vh;
+  background-color: #f7f7f7;
   text-align: center;
-  margin-top: 20px;
+  border-radius: 0 0 15px 15px;
+  padding-top: 0.6rem;
 }
 
-.form-footer a {
+.link {
   color: #2e5be1;
-  text-decoration: none;
-  font-weight: bold;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-.form-footer a:hover {
-  text-decoration: underline;
+.link:hover {
+  color: #396bff;
 }
 
 .error-message {
@@ -112,6 +123,7 @@ body {
   border: 2px solid #fd9696;
   border-radius: 8px;
   font-size: 16px;
+  text-align: center;
   transition: border-color 0.3s;
   margin-top: 1rem;
 }
