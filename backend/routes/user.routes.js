@@ -15,7 +15,7 @@ router.post(
     body("email").isEmail().withMessage("Enter a valid email"),
     body("password")
       .isLength({ min: 5 })
-      .withMessage("Password must be at least 5 characters"),
+      .withMessage("Password must be at least 5 characters long"),
   ],
   userController.RegisterUser
 );
